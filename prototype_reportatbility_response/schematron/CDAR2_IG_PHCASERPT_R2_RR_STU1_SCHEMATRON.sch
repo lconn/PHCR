@@ -2,7 +2,7 @@
 <!--
 
 THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL LANTANA CONSULTING GROUP LLC, OR ANY OF THEIR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-Schematron generated from Trifolia on 2/2/2017
+Schematron generated from Trifolia on 2/3/2017
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:cda="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
@@ -444,6 +444,11 @@ Schematron generated from Trifolia on 2/2/2017
       <sch:assert id="a-3315-246" test="cda:statusCode[@code='completed']">This statusCode SHALL contain exactly one [1..1] @code="completed" (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3315-246).</sch:assert>
       <sch:assert id="a-3315-326" test="count(cda:component[count(cda:observation[cda:templateId[@root='2.16.840.1.113883.10.20.15.2.3.15' and @extension = '2017-04-01']])=1])=1">SHALL contain exactly one [1..1] component (CONF:3315-326) such that it SHALL contain exactly one [1..1] Reporting Action (identifier: urn:hl7ii:2.16.840.1.113883.10.20.15.2.3.15:2017-04-01) (CONF:3315-330).</sch:assert>
       <sch:assert id="a-3315-328" test="count(cda:component[count(cda:organizer[cda:templateId[@root='2.16.840.1.113883.10.20.15.2.3.16' and @extension = '2017-04-01']])=1])=1">SHALL contain exactly one [1..1] component (CONF:3315-328) such that it SHALL contain exactly one [1..1] External Reference Organizer (identifier: urn:hl7ii:2.16.840.1.113883.10.20.15.2.3.16:2017-04-01) (CONF:3315-332).</sch:assert>
+      <sch:assert id="a-3315-338" test="count(cda:participant) &gt; 0">SHALL contain at least one [1..*] participant (CONF:3315-338).</sch:assert>
+      <sch:assert id="a-3315-339" test="cda:participant[count(cda:participantRole)=1]">Such participants SHALL contain exactly one [1..1] participantRole (CONF:3315-339).</sch:assert>
+      <sch:assert id="a-3315-340" test="cda:participant/cda:participantRole[count(cda:playingEntity)=1]">This participantRole SHALL contain exactly one [1..1] playingEntity (CONF:3315-340).</sch:assert>
+      <sch:assert id="a-3315-341" test="cda:participant[@typeCode='LOC']">Such participants SHALL contain exactly one [1..1] @typeCode="LOC" Location (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:3315-341).</sch:assert>
+      <sch:assert id="a-3315-344" test="cda:participant/cda:participantRole/cda:playingEntity[count(cda:name)=1]">This playingEntity SHALL contain exactly one [1..1] name (CONF:3315-344).</sch:assert>
     </sch:rule>
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.10.20.15.2.3.13-2017-04-01-errors" context="cda:organizer[cda:templateId[@root='2.16.840.1.113883.10.20.15.2.3.13' and @extension = '2017-04-01']]">
       <sch:extends rule="r-urn-hl7ii-2.16.840.1.113883.10.20.15.2.3.13-2017-04-01-errors-abstract" />
@@ -726,6 +731,8 @@ Schematron generated from Trifolia on 2/2/2017
   <sch:pattern id="p-urn-hl7ii-2.16.840.1.113883.10.20.15.2.3.13-2017-04-01-warnings">
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.10.20.15.2.3.13-2017-04-01-warnings-abstract" abstract="true">
       <sch:assert id="a-3315-327" test="count(cda:component[count(cda:organizer[cda:templateId[@root='2.16.840.1.113883.10.20.15.2.3.18' and @extension = '2017-04-01']])=1])=1">SHOULD contain zero or one [0..1] component (CONF:3315-327) such that it SHALL contain exactly one [1..1] Additional External Reference Organizer (identifier: urn:hl7ii:2.16.840.1.113883.10.20.15.2.3.18:2017-04-01) (CONF:3315-331).</sch:assert>
+      <sch:assert id="a-3315-342" test="cda:participant/cda:participantRole[count(cda:addr) &gt; 0]">This participantRole SHOULD contain zero or more [0..*] addr (CONF:3315-342).</sch:assert>
+      <sch:assert id="a-3315-343" test="cda:participant/cda:participantRole[count(cda:telecom) &gt; 0]">This participantRole SHOULD contain zero or more [0..*] telecom (CONF:3315-343).</sch:assert>
       <sch:assert id="a-3315-244-v" test="count(cda:code)=1">SHALL contain exactly one [1..1] code, which SHOULD be selected from ValueSet Trigger code for condition name (RCTC subset) urn:oid:2.16.840.1.113762.1.4.1146.28 DYNAMIC (CONF:3315-244).</sch:assert>
     </sch:rule>
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.10.20.15.2.3.13-2017-04-01-warnings" context="cda:organizer[cda:templateId[@root='2.16.840.1.113883.10.20.15.2.3.13' and @extension = '2017-04-01']]">
