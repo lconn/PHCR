@@ -595,6 +595,44 @@
                                                   where it is not the condition, but a lab test that triggered the eICR)-->
                                             <code code="27836007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Pertussis (disorder)" sdtc:valueSet="2.16.840.1.113762.1.4.1146.28" sdtc:valueSetVersion="19/05/2016" />
                                             <statusCode code="completed" />
+                                            <participant typeCode="LOC">
+                                                <participantRole>
+                                                    <id extension="12341234" root="2.16.840.1.113883.4.6" />
+                                                    <addr use="H">
+                                                        <streetAddressLine>4300 Cherry Creek Drive South</streetAddressLine>
+                                                        <city>Denver</city>
+                                                        <state>CO</state>
+                                                        <postalCode>80246</postalCode>
+                                                    </addr>
+                                                    <telecom use="WP" value="tel:+1-801-588-3498" />
+                                                    <telecom use="WP" value="fax:+1-801-588-5555" />
+                                                    <telecom use="WP" value="mailto:mail@colorado_health.com" />
+                                                    <telecom use="WP" value="https://www.colorado_health.gov" />
+                                                    <playingEntity>
+                                                        <name>Colorado Department of Public Health and Environment</name>
+                                                        <desc>Routing Location Description</desc>
+                                                    </playingEntity>
+                                                </participantRole>
+                                            </participant>
+                                            <participant typeCode="LOC">
+                                                <participantRole>
+                                                    <id extension="12341234" root="2.16.840.1.113883.4.6" />
+                                                    <addr use="H"> Trenton, NJ 08608-2308
+                                                        <streetAddressLine>369 South Warren Street</streetAddressLine>
+                                                        <city>Trenton</city>
+                                                        <state>NJ</state>
+                                                        <postalCode>08608-2308</postalCode>
+                                                    </addr>
+                                                    <telecom use="WP" value="tel:+1-609-588-9848" />
+                                                    <telecom use="WP" value="fax:+1-609-588-5454" />
+                                                    <telecom use="WP" value="mailto:mail@nj.com" />
+                                                    <telecom use="WP" value="https://www.nj.gov/health" />
+                                                    <playingEntity>
+                                                        <name>New Jersey Department of Health</name>
+                                                        <desc>Routing Location Description</desc>
+                                                    </playingEntity>
+                                                </participantRole>
+                                            </participant>
                                             <component typeCode="COMP">
 
                                                 <observation classCode="OBS" moodCode="EVN">
@@ -775,6 +813,44 @@
                                                   where it is not the condition, but a lab test that triggered the eICR)-->
                                             <code code="90974009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Salmonellosis (except human typhoid and paratyphoid) (disorder)" sdtc:valueSet="2.16.840.1.113762.1.4.1146.28" sdtc:valueSetVersion="19/05/2016" />
                                             <statusCode code="completed" />
+                                            <participant typeCode="LOC">
+                                                <participantRole>
+                                                    <id extension="12341234" root="2.16.840.1.113883.4.6" />
+                                                    <addr use="H">
+                                                        <streetAddressLine>4300 Cherry Creek Drive South</streetAddressLine>
+                                                        <city>Denver</city>
+                                                        <state>CO</state>
+                                                        <postalCode>80246</postalCode>
+                                                    </addr>
+                                                    <telecom use="WP" value="tel:+1-801-588-3498" />
+                                                    <telecom use="WP" value="fax:+1-801-588-5555" />
+                                                    <telecom use="WP" value="mailto:mail@colorado_health.com" />
+                                                    <telecom use="WP" value="https://www.colorado_health.gov" />
+                                                    <playingEntity>
+                                                        <name>Colorado Department of Public Health and Environment</name>
+                                                        <desc>Routing Location Description</desc>
+                                                    </playingEntity>
+                                                </participantRole>
+                                            </participant>
+                                            <participant typeCode="LOC">
+                                                <participantRole>
+                                                    <id extension="12341234" root="2.16.840.1.113883.4.6" />
+                                                    <addr use="H"> Trenton, NJ 08608-2308
+                                                        <streetAddressLine>369 South Warren Street</streetAddressLine>
+                                                        <city>Trenton</city>
+                                                        <state>NJ</state>
+                                                        <postalCode>08608-2308</postalCode>
+                                                    </addr>
+                                                    <telecom use="WP" value="tel:+1-609-588-9848" />
+                                                    <telecom use="WP" value="fax:+1-609-588-5454" />
+                                                    <telecom use="WP" value="mailto:mail@nj.com" />
+                                                    <telecom use="WP" value="https://www.nj.gov/health" />
+                                                    <playingEntity>
+                                                        <name>New Jersey Department of Health</name>
+                                                        <desc>Routing Location Description</desc>
+                                                    </playingEntity>
+                                                </participantRole>
+                                            </participant>
                                             <component typeCode="COMP">
                                                 <observation classCode="OBS" moodCode="EVN">
                                                     <!-- [RR R1S1] Reporting Timeframe-->
