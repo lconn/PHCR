@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    File:               CDAR2_IG_PHCASERPTRR_R1_STU1_Sample.xml
+    Specification:      Public Health Case Report, Reportability Response, Release 1, STU Release 1 - US Realm
+    
+    Created:            Jan 2017            Sarah Gaunt
+    
+    Revision History:    
+-->
+<!--
+    Disclaimer: 
+    This sample file is informative only.
+    This sample file contains representative data elements from the eICR IG. 
+    The file depicts a fictional character's health data. Any resemblance to a real person is coincidental.
+    To illustrate as many data elements as possible, the clinical scenario may not be entirely plausible. 
+    The data in this sample file is not intended to represent a real patients, people or clinical events. 
+    This sample is designed to be used in conjunction with the eICR IG.
+     
+    Where guidance has been given to the conformance or cardinality of elements or
+    attributes and there is a discrepancy with the IG, the IG is always the normative
+    source of truth.
+    
+    Please note:  This sample is valid against the Schema and Schematron for ERRORS (not warnings). 
+    Logical schematron WARNINGS will generate from the sample file. 
+    It is logical to generate a samples file from a system with valid warnings.
+-->
+<!-- 
+    Templates are identified in comments above their template id.  
+    The IG in which the template version was first published is identified in square brackets before the template name.
+    
+    e.g.: [C-CDA 2.1] Continuity of Care (CCD) (V3)       indicates that the Discharge Summary (V3) template was first published in IG C-CDA R2.1
+          [C-CDA R2.0] Plan of Treatment Section (V2)     indicates that the Plan of Treatment Section (V2) template was first published in IG C-CDA R2.0
+          [C-CDA R1.1] History of Present Illness Section indicates that the Hospital Course Section was first published in IG C-CDA R1.1
+          
+    Even though all 3 templates above are included in IG C-CDA 2.1, because there have been no new versions of 
+    the History of Present Illness Section template in IGs later than C-CDA R1.1, it is considered to be published in R1.1. 
+    Similarly, there have been no new versions of the Plan of Treatment Section template later than C-CDA R.2 so it 
+    is considered to be published in R2.0.
+-->
+<!--
+    While assertion of conformance with both C-CDA R2.1 and C-CDA R1.1 is NOT a requirement of the eICR IG, it is recommended that, if the 
+    originating system includes both the versioned and un-versioned templateId, then both these templateIds SHOULD be preserved in the eICR document.
+    The examples and sample file included with this IG illustrate the optional use of the C-CDA R1.1 templateId.
+-->
+<!--<?xml-stylesheet type="text/xsl" href="../../transform/cda.xsl"?>-->
+
+<?xml-stylesheet type="text/xsl" href="../../../../../strucdoc/CDA/processable/CDA.xsl"?>
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:voc="http://www.lantanagroup.com/voc" xmlns="urn:hl7-org:v3" xmlns:cda="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xsi:schemaLocation="urn:hl7-org:v3 ../../schema/infrastructure/cda/CDA_SDTC.xsd">
+    <!--
+        ********************************************************
+        CDA Header
+        ********************************************************
+    -->
+    <!-- US Realm Header template -->
+    <realmCode code="US" />
+    <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3" />
+    <!-- **TODO** Does US Realm Header make sense here or is this too much info? -->
+    <!-- [C-CDA R2.1] US Realm Header (V3) -->
+    <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01" />
+    <!-- [RR R1S1] Initial Public Health Case Report Reportability Response Document (RR) -->
+    <!-- **TODO** template id-->
+    <templateId root="2.16.840.1.113883.10.20.15.2" extension="2017-04-01" />
+    <!-- Globally unique document ID (extension) is scoped by vendor/software -->
+    <id root="18218889-5d7d-47d4-b329-31bb1c28d3b3" />
+    <!-- Document Code -->
+    <!-- **TODO** -->
+    <code code="55751-2" codeSystem="2.16.840.1.113883.6.1" displayName="Public Health Case Report" />
+    <title>Initial Public Health Case Report Reportability Response</title>
+    <effectiveTime value="20161212094421-0700" />
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" displayName="Normal" />
+    <languageCode code="en-US" />
+    <!--
+        ********************************************************
+        recordTarget: The patient
+        ********************************************************
+    -->
+    <recordTarget>
+        <!-- Patient demographic information -->
+        <patientRole>
+            <!-- Fake root for sample -->
+            <id extension="123453" root="2.16.840.1.113883.19.5" />
+            <!--SSN-->
+            <id extension="111-00-1234" root="2.16.840.1.113883.4.1" />
+            <!--Could have multiple addresses-->
+            <!-- HIMSS UC12 Street Address: 861 East 1300 South
+                                            Salt Lake City, UT 84105
+            -->
+            <addr use="H">
+                <streetAddressLine>861 East 1300 South</streetAddressLine>
+                <city>Salt Lake City</city>
+                <state>UT</state>
+                <postalCode>84105</postalCode>
+                <!-- Although "county" is not explicitly specified in the US Realm Address, 
+                     it is not precluded from use and for the purposes of this IG it is 
+                     recommended to be included. -->
+                <county>Salt Lake County</county>
+                <country>US</country>
+            </addr>
+            <!-- HIMSS UC12 Patient Phone: 801-588-3498 -->
+            <telecom use="HP" value="tel:+1-801-588-3498" />
+            <patient>
+                <!-- HIMSS UC12 Patient Name: Eva Alvares -->
+                <name use="L">
+                    <given>Eva</given>
+                    <family>Alvares</family>
+                </name>
+                <!-- HIMSS UC12 Patient Sex: F (See also Birth Sex template)-->
+                <administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.5.1" />
+                <!-- HIMSS UC12 Birth Date: 4-22-1990 -->
+                <birthTime value="19900422" />
+                <!-- If sdtc:deceasedInd is true then sdtc:deceasedTime must be present -->
+                <!-- HIMSS UC12 Death Date: n/a -->
+                <sdtc:deceasedInd value="false" />
+                <!-- **TODO** HIMSS UC12 Race: Hispanic (this is not a valid code - have set to "white") -->
+                <raceCode code="2106-3" codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC" displayName="White" />
+                <!-- HIMSS UC12 Ethncity: Latino -->
+                <ethnicGroupCode code="2135-2" codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC" displayName="Hispanic or Latino" />
+                <!-- HIMSS UC12 Preferred language: Spanish -->
+                <languageCommunication>
+                    <!-- **TODO** check that this code is correct -->
+                    <languageCode code="sp" />
+                    <modeCode code="ESP" codeSystem="2.16.840.1.113883.5.60" codeSystemName="LanguageAbilityMode" displayName="Expressed spoken" />
+                    <proficiencyLevelCode code="G" codeSystem="2.16.840.1.113883.5.61" codeSystemName="LanguageAbilityProficiency" displayName="Good" />
+                    <!-- Preferred Language -->
+                    <preferenceInd value="true" />
+                </languageCommunication>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <!--
+        ********************************************************
+        author
+        ********************************************************
+    -->
+    <!-- **TODO** -->
+    <author>
+        <time value="20161212100000-0700" />
+        <assignedAuthor>
+            <!--Id for authoring device - made up application OID-->
+            <id root="2.16.840.1.113883.3.72.5.20" />
+            <addr>
+                <streetAddressLine>4646 Brown Rd</streetAddressLine>
+                <city>Salem</city>
+                <state>MA</state>
+                <postalCode>02368</postalCode>
+                <country>US</country>
+            </addr>
+            <telecom use="WP" value="tel:+1-(555)555-1212;ext=9998" />
+            <assignedAuthoringDevice>
+                <manufacturerModelName displayName="Platform" />
+                <softwareName displayName="Platform" />
+            </assignedAuthoringDevice>
+        </assignedAuthor>
+    </author>
+    <!--
+        ********************************************************
+        custodian: The custodian of the CDA document is the generator of the document
+        ********************************************************
+    -->
+    <!-- **TODO** Who is the custodian?  -->
+    <custodian>
+        <assignedCustodian>
+            <representedCustodianOrganization>
+                <id extension="88888888" root="2.16.840.1.113883.4.6" />
+                <name>Custodian Name</name>
+                <telecom use="WP" value="tel:+1(555)555-1212" />
+                <addr>
+                    <streetAddressLine>4646 Brown Rd</streetAddressLine>
+                    <city>Salem</city>
+                    <state>MA</state>
+                    <postalCode>02368</postalCode>
+                    <country>US</country>
+                </addr>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <!--
+        ********************************************************
+        componentOf: contains the encompassingEncounter and the
+        provider and facility infomation for the case
+        ********************************************************
+    -->
+    <componentOf>
+        <encompassingEncounter>
+            <!--encounter ID-->
+            <id extension="9937012" root="2.16.840.1.113883.19" />
+            <!--CPT-4 E/M codes - granular-->
+            <code code="99213" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4" displayName="Office outpatient visit 15 minutes">
+                <!--ActClassEncounterCodes - high level -->
+                <translation code="AMB" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActEncounterCode" displayName="Ambulatory" />
+            </code>
+            <!-- HIMSS UC12: Visit Date/Time: 11/14/2016 -->
+            <effectiveTime>
+                <low value="201611141000-0700" />
+                <high value="201611141015-0700" />
+            </effectiveTime>
+            <!-- provider in charge of care when case reported -->
+            <responsibleParty>
+                <assignedEntity>
+                    <id extension="6666666666666" root="2.16.840.1.113883.4.6" />
+                    <!-- HIMSS UC12: Provider Address:  288 North 1460 West
+                                                        Clinic Bldg A, Suite 200
+                                                        Salt Lake City, Utah 84116
+                    -->
+                    <addr>
+                        <streetAddressLine>Clinic Bldg A, Suite 200, 288 North 1460 West</streetAddressLine>
+                        <city>Salt Lake City</city>
+                        <state>UT</state>
+                        <postalCode>84116</postalCode>
+                        <county>Salt Lake County</county>
+                        <country>US</country>
+                    </addr>
+                    <!-- HIMSS UC12: Provider Phone: 801-726-1234 -->
+                    <telecom use="WP" value="tel:+1-801-726-1234" />
+                    <!-- HIMSS UC12: Provider Fax: 801-726-3746 -->
+                    <telecom use="WP" value="fax:+1-801-726-3746" />
+                    <!-- HIMSS UC12: Provider Email: tjonesmd@email.net -->
+                    <telecom use="WP" value="mailto:tjonesmd@email.net" />
+                    <assignedPerson>
+                        <!-- HIMSS UC12: Provider Name: Terry Jones -->
+                        <name>
+                            <given>Terry</given>
+                            <family>Jones</family>
+                            <!-- <suffix qualifier="AC">M.D.</suffix>-->
+                        </name>
+                    </assignedPerson>
+                    <representedOrganization>
+                        <!-- HIMSS UC12: Provider Facility/Office Name: University Baby Doctor Associates -->
+                        <name>University Baby Doctor Associates</name>
+                        <!-- HIMSS UC12: Provider Address:  288 North 1460 West
+                                                            Clinic Bldg A, Suite 200
+                                                            Salt Lake City, Utah 84116
+                        -->
+                        <addr>
+                            <streetAddressLine>Clinic Bldg A, Suite 200, 288 North 1460 West</streetAddressLine>
+                            <city>Salt Lake City</city>
+                            <state>UT</state>
+                            <postalCode>84116</postalCode>
+                            <county>Salt Lake County</county>
+                            <country>US</country>
+                        </addr>
+                    </representedOrganization>
+                </assignedEntity>
+            </responsibleParty>
+            <!-- Information about facility where care was provided when case reported-->
+            <location>
+                <healthCareFacility>
+                    <!-- Facility ID Number -->
+                    <id extension="77777777777" root="2.16.840.1.113883.4.6" />
+                    <!-- HIMSS UC12: Facility Type: Outpatient Facility-->
+                    <code code="OF" codeSystem="2.16.840.1.113883.5.111" displayName="Outpatient facility" />
+                    <!-- Facility location within larger healthcare organization e.g Kaiser Vacaville within Kaiser North-->
+                    <location>
+                        <!-- HIMSS UC12: Provider Address:  288 North 1460 West
+                                                            Clinic Bldg A, Suite 200
+                                                            Salt Lake City, Utah 84116
+                        -->
+                        <addr>
+                            <streetAddressLine>Clinic Bldg A, Suite 200, 288 North 1460 West</streetAddressLine>
+                            <city>Salt Lake City</city>
+                            <state>UT</state>
+                            <postalCode>84116</postalCode>
+                            <county>Salt Lake County</county>
+                            <country>US</country>
+                        </addr>
+                    </location>
+                    <!--Facility contact information-->
+                    <serviceProviderOrganization>
+                        <!-- HIMSS UC12: Facility Name: University Hospital -->
+                        <name>University Hospital</name>
+                        <!-- HIMSS UC12: Facility Phone: 801-722-6000 -->
+                        <telecom use="WP" value="tel:+1-801-722-6000" />
+                        <!-- HIMSS UC12: Facility Fax: 801-722-6001 -->
+                        <telecom use="WP" value="fax:+1-801-722-6001" />
+                        <!-- HIMSS UC12: Facility Addr: 288 North 1460 West
+                                                        Salt Lake City, Utah 84116
+                        -->
+                        <addr>
+                            <streetAddressLine>288 North 1460 West</streetAddressLine>
+                            <city>Salt Lake City</city>
+                            <state>UT</state>
+                            <postalCode>84116</postalCode>
+                            <county>Salt Lake County</county>
+                            <country>US</country>
+                        </addr>
+                    </serviceProviderOrganization>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <!--
+                ********************************************************
+                Reportability Response Short Description Section
+                ********************************************************
+            -->
+            <component>
+                <section>
+                    <!-- [RR R1S1] Reportability Response Short Description Section -->
+                    <templateId root="2.16.840.1.113883.10.20.15.2.2.1" extension="2017-04-01" />
+                    <!-- **TODO** LOINC code needed -->
+                    <code code="TEMP_CODE_DESCRIPTION_SECTION" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Reportability Response Short Description" />
+
+                    <text>
+                        <!-- paragraph/content/@ID contains the id of the template that references it, prefixed with "ref_" -->
+                        <paragraph><content ID="ref_c62d8411-27a3-4d22-9ddb-a4998faea87a"><content styleCode="Bold">Reportable condition notification:</content>  An initial report for Pertussis and Salmonellosis has been sent to the Colorado Department of Public Health and Environment and New Jersey Department of Health.</content></paragraph>
+                    </text>
+                    <!-- Reportability Response Short Description -->
+                    <entry typeCode="DRIV">
+                        <act classCode="ACT" moodCode="INT">
+                            <!-- [C-CDA R2.1] Instruction (V2) -->
+                            <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09" />
+                            <!-- [RR R1S1] Reportability Response Short Description -->
+                            <templateId root="2.16.840.1.113883.10.20.15.2.3.7" extension="2017-04-01" />
+                            <id root="c62d8411-27a3-4d22-9ddb-a4998faea87a" />
+                            <!-- **TODO** Not sure about code... -->
+                            <code code="131195008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Subject of information" />
+                            <!-- The text/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                            <text><reference value="#ref_c62d8411-27a3-4d22-9ddb-a4998faea87a" /></text>
+                            <statusCode code="completed" />
+                        </act>
+                    </entry>
+                </section>
+            </component>
+            <!--
+                ********************************************************
+                Reportability Response Summary Section
+                ********************************************************
+            -->
+            <component>
+                <section>
+                    <!-- [RR R1S1] Reportability Response Summary Section -->
+                    <templateId root="2.16.840.1.113883.10.20.15.2.2.2" extension="2017-04-01" />
+                    <!-- **TODO** LOINC: The essence of the document -->
+                    <!-- Could also use: 68608-9 Summary note (this doesn't seem to have a description -->
+                    <!-- Could also request a new code for Reportability Response Summary -->
+                    <code code="55112-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Document Summary" />
+                    <!-- <title>Reportability Response</title>-->
+                    <text>
+                        <!-- eICR Information -->
+                        <table ID="ref_2.16.840.1.113883.10.20.15.2.2.3">
+                            <col width="40%" />
+                            <col width="60%" />
+
+                            <tbody>
+                                <tr>
+                                    <td>eICR Identifier</td>
+                                    <td>ca316e79-aaf2-4e8c-aa5f-848093bb8bb1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <paragraph><content styleCode="Bold">Summary:</content></paragraph>
+                        <!-- paragraph/content/@ID contains the value of the id/@root of the Reportability Response Summary template, prefixed with "ref_".
+                             The Reportability Response Summary template references this narrative -->
+                        <paragraph><content ID="ref_7a0ed3d3-16f3-4fa9-bac5-882f5c7d44b8"
+                                >An initial case report was electronically submitted by your organization to determine if a patient has a public health reportable condition.  The conditions of Pertussis and Salmonellosis were identified and are reportable conditions in Colorado and New Jersey. Additional information needs be submitted to the Colorado Department of Public Health and Environment for the report of Pertussis within 24 hours and for Salmonellosis within 7 days. The initial case report was forwarded to the Colorado Department of Public Health and Environment and the New Jersey Department of Health.</content></paragraph>
+                        <!-- External References (Pertussis) -->
+                        <table>
+                            <!--  <caption>Pertussis supplemental information/lab test requests</caption>-->
+                            <col width="40%" />
+                            <col width="60%" />
+
+                            <tbody>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_1194e930-8040-45ff-a212-82ef3d161515">Additional information for the report of Pertussis is required to be submitted within 24 hours. This additional information can be submitted here:</content></td>
+                                    <td><linkHtml href="https://www.colorado.gov/pacific/sites/default/files/DC_ComDis-Disease-Reporting_Form.pdf">https://www.colorado.gov/pacific/sites/default/files/DC_ComDis-Disease-Reporting_Form.pdf</linkHtml></td>
+                                </tr>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_f35b1b90-2695-47ac-892c-cf4613faa710">Additional information for the report of Pertussis is required to be submitted within 24 hours. This additional information can be submitted here:</content></td>
+                                    <td><linkHtml href="https://www.cdc.gov/vaccines/pubs/surv-manual/appx/appendix11-2-pertussis-wrsht.pdf">https://www.cdc.gov/vaccines/pubs/surv-manual/appx/appendix11-2-pertussis-wrsht.pdf</linkHtml></td>
+                                </tr>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_0ddae9f9-0dd5-40ed-a58a-a09a69fa7666">Further Laboratory testing for Pertussis may be needed. Guidance for specimen collection is available here:</content></td>
+                                    <td><linkHtml href="https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Specimen-Collection.pdf">https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Specimen-Collection.pdf</linkHtml></td>
+                                </tr>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_97a77697-b795-4b56-985f-b85d4f1b4691">If you have additional questions regarding Pertussis or reporting, contact information for the Colorado Department of Health is available here:</content></td>
+                                    <td><linkHtml href="https://www.colorado.gov/pacific/cdphe/report-a-disease">https://www.colorado.gov/pacific/cdphe/report-a-disease</linkHtml></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <!-- External References (Salmonellosis) -->
+                        <table>
+                            <!--  <caption>Salmonellosis supplemental information/lab test requests</caption>-->
+                            <col width="40%" />
+                            <col width="60%" />
+
+                            <tbody>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_ec84fae2-d76f-4a91-9efb-4761e5d4267d">Additional information for the report of Salmonellosis is required to be submitted within 7 days. This additional information can be submitted here:</content></td>
+                                    <td><linkHtml href="https://www.colorado.gov/pacific/sites/default/files/DC_ComDis-Disease-Reporting_Form.pdf">https://www.colorado.gov/pacific/sites/default/files/DC_ComDis-Disease-Reporting_Form.pdf</linkHtml></td>
+                                </tr>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_af73f770-353b-4f6e-943f-19b79cb33d28">If you have additional questions regarding Salmonellosis or reporting, contact information for the Colorado Department of Health is available here:</content></td>
+                                    <td><linkHtml href="https://www.colorado.gov/pacific/cdphe/report-a-disease">https://www.colorado.gov/pacific/cdphe/report-a-disease</linkHtml></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <br />
+                        <!-- Additional References -->
+                        <table>
+                            <caption>Additional References</caption>
+                            <col width="40%" />
+                            <col width="60%" />
+
+                            <tbody>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_000a4af2-99f7-4349-93e7-01bcdb1a761d">Treatment and prophylaxis guidance for cases and contacts</content></td>
+                                    <td><linkHtml href="https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Guidance-on-the-Treatment-and-Prophylaxis-of-Pertussis-Cases-and-Contacts.pdf">https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Guidance-on-the-Treatment-and-Prophylaxis-of-Pertussis-Cases-and-Contacts.pdf</linkHtml></td>
+                                </tr>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_68c5eb36-a0a2-46e4-b707-0ed569dfd022">Guidance for schools or child care centers</content></td>
+                                    <td><linkHtml href="https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Information-and-Guidelines-for-Schools-and-Child-Care-Settings.pdf">https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Information-and-Guidelines-for-Schools-and-Child-Care-Settings.pdf</linkHtml></td>
+                                </tr>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_b656fb21-c6fb-406a-ab76-e1427a07602b">Pertussis data in Colorado</content></td>
+                                    <td><linkHtml href="https://www.colorado.gov/pacific/cdphe/pertussis-data-and-statistics">https://www.colorado.gov/pacific/cdphe/pertussis-data-and-statistics</linkHtml></td>
+                                </tr>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_5c5edc56-d467-413f-9917-1faf80fb7169">CDC website for Pertussis</content></td>
+                                    <td><linkHtml href="https://www.cdc.gov/pertussis/index.html">https://www.cdc.gov/pertussis/index.html</linkHtml></td>
+                                </tr>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_b16e0bed-b3f8-4566-9964-99858b0893ec">Pertussis information sheet</content></td>
+                                    <td><linkHtml href="https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Information-Sheet.pdf">https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Information-Sheet.pdf</linkHtml></td>
+                                </tr>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_3990dccf-afc4-4008-9aa6-aafba6d142ab">Frequently asked questions</content></td>
+                                    <td><linkHtml href="https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Frequently-Asked-Questions.pdf">https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Frequently-Asked-Questions.pdf</linkHtml></td>
+                                </tr>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_0b6108e9-b644-4a39-8c2f-b1018612e70c">Guidelines for gastrointestinal outbreaks</content></td>
+                                    <td><linkHtml href="https://www.colorado.gov/pacific/cdphe/outbreak-investigation-guidelines">https://www.colorado.gov/pacific/cdphe/outbreak-investigation-guidelines</linkHtml></td>
+                                </tr>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_1e4f1ca1-3d17-484b-b85d-c53824a7ab34">Foodborne illness data</content></td>
+                                    <td><linkHtml href="https://www.colorado.gov/pacific/cdphe/foodborne-illness-data">https://www.colorado.gov/pacific/cdphe/foodborne-illness-data</linkHtml></td>
+                                </tr>
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_a40b97aa-3016-4108-9129-c1d9c28ba892">CDC website for Salmonellosis</content></td>
+                                    <td><linkHtml href="https://www.cdc.gov/salmonella/index.html">https://www.cdc.gov/salmonella/index.html</linkHtml></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <br />
+                    </text>
+
+                    <!-- Reportability Response Summary -->
+                    <entry typeCode="DRIV">
+                        <act classCode="ACT" moodCode="INT">
+                            <!-- [C-CDA R2.1] Instruction (V2) -->
+                            <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09" />
+                            <!-- [RR R1S1] Reportability Response Summary -->
+                            <templateId root="2.16.840.1.113883.10.20.15.2.3.8" extension="2017-04-01" />
+                            <id root="7a0ed3d3-16f3-4fa9-bac5-882f5c7d44b8" />
+                            <!-- **TODO** Probably not the right code -->
+                            <!-- Consider 385820004 : Infection control education -->
+                            <code code="304561000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Informing health care professional (procedure)" />
+                            <!-- The text/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                            <text><reference value="#ref_7a0ed3d3-16f3-4fa9-bac5-882f5c7d44b8" /></text>
+                            <statusCode code="completed" />
+                        </act>
+                    </entry>
+                    <!--<!-\- Reportability Response References -\->
+                    <entry typeCode="DRIV">
+                        <act classCode="ACT" moodCode="INT">
+                            <templateId root="2.16.840.1.113883.10.20.15.2.3.77777" extension="2017-04-01" />
+                            <!-\- **TODO** Probably not the right code -\->
+                            <!-\- Consider 385820004 : Infection control education -\->
+                            <code code="TEMP_CODE_REFERENCES" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="References" />
+                            <text><reference value="#references" /></text>
+                        </act>
+                    </entry>-->
+                    <!--
+                        ********************************************************
+                        Electronic Initial Case Report Section
+                        ********************************************************
+                    -->
+                    <component>
+                        <section>
+                            <!-- [RR R1S1] Electronic Initial Case Report Section -->
+                            <templateId root="2.16.840.1.113883.10.20.15.2.2.3" extension="2017-04-01" />
+                            <!-- **TODO** Request LOINC code -->
+                            <code code="TEMP_CODE_EICR_SECTION" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Electronic Intial Case Report Section" />
+                            <entry>
+                                <act classCode="ACT" moodCode="INT">
+                                    <!-- [RR R1S1] Received eICR Information -->
+                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.9" extension="2017-04-01" />
+                                    <id root="6bff7990-f218-4f9d-a5aa-eb7afa6e9a3c" />
+                                    <!-- **TODO** Get code -->
+                                    <code code="TEMP_CODE_eICR_INFO" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Received eICR Information" />
+
+                                    <statusCode code="completed" />
+                                    <!-- Receipt date/time the eICR document that this document is in response to -->
+                                    <effectiveTime value="20161212152000-0700" />
+                                    <reference typeCode="REFR">
+                                        <!-- This is a reference to the eICR document -->
+                                        <externalDocument classCode="DOCCLIN" moodCode="EVN">
+                                            <!-- [C-CDA R2.0 External Document Reference] -->
+                                            <templateId root="2.16.840.1.113883.10.20.22.4.115" extension="2014-06-09" />
+                                            <!-- [RR R1S1 eICR External Document Reference] -->
+                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.10" extension="2017-04-01" />
+                                            <!-- ClinicalDocument/id of the eICR CDA instance that this document is in response to -->
+                                            <id root="ca316e79-aaf2-4e8c-aa5f-848093bb8bb1" />
+                                            <!-- eICR ClinicalDocument/code (hard coded to this) -->
+                                            <code code="55751-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Public Health Case Report (eICR)" />
+                                            <!-- If there is a setId and versionNumber this must be populated -->
+                                            <!-- <setId extension="sTT988" root="2.16.840.1.113883.19.5.99999.19" />
+                                            <versionNumber value="1" />-->
+                                            <!-- if a link ot the eICR document is available, it should be placed in the text/reference element -->
+                                            <text><reference value="https://www.provider.com/eICR_CDA_document.xml" /></text>
+                                        </externalDocument>
+                                    </reference>
+                                </act>
+                            </entry>
+
+                        </section>
+                    </component>
+                    <!--
+                        ********************************************************
+                        Reportability Response Coded Information Section
+                        ********************************************************
+                    -->
+                    <component>
+                        <section>
+                            <!-- **TODO** Doubt it, but double check to see if there is a C-CDA section we can use -->
+                            <!-- [RR R1S1] Initial Public Health Case Report Reportability Response Document (RR) -->
+                            <!-- **TODO** Template Id -->
+                            <templateId root="2.16.840.1.113883.10.20.15.2.2.4" extension="2017-04-01" />
+                            <!-- **TODO** Need new LOINC code -->
+                            <code code="TEMP_CODE_CODED_INFO_SECTION" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Reportability Response Coded Information" />
+                            <entry typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <!-- [RR R1S1] Reportability Response Report Status -->
+                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.11" extension="2017-04-01" />
+                                    <id root="f9beb11c-f7fc-49e0-a8fc-7deef9b0b97d" />
+                                    <code code="TEMP_CODE_REPORT_STATUS" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Report Status" />
+                                    <value xsi:type="CD" code="TEMP_CODE_REPORT_4" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Reportable – multiple conditions/multiple jurisdictions" />
+                                </observation>
+                            </entry>
+                            <entry typeCode="COMP">
+                                <!-- Jurisdiction Organizer - CO -->
+                                <organizer classCode="CLUSTER" moodCode="EVN">
+                                    <!-- [RR R1S1] Reporting Jurisdiction Organizer -->
+                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.12" extension="2017-04-01" />
+                                    <id root="fcf92143-4289-450e-9550-8d574facf626" />
+                                    <!-- Jurisdiction code (state for now) -->
+                                    <code code="CO" codeSystem="2.16.840.1.113883.6.92" codeSystemName="FIPS 5-2 (State)" displayName="Colorado">
+                                        <originalText>Colorado Department of Public Health and Environment</originalText>
+                                    </code>
+                                    <statusCode code="completed" />
+                                    <!-- Condition 1 - Pertussis -->
+                                    <component typeCode="COMP">
+                                        <organizer classCode="CLUSTER" moodCode="EVN">
+                                            <!-- [RR R1S1] Reportable Condition Information Organizer -->
+                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.13" extension="2017-04-01" />
+                                            <id root="69aa7cbf-7d17-42da-8621-1dee02121ac8" />
+                                            <!-- Condition code (SNOMED CT) -->
+                                            <!-- **TODO** Do we want this to contain the RCTC value set and version? -->
+                                            <!-- **TODO** DO we want something that contains the original trigger code? (e.g. like this example 
+                                                  where it is not the condition, but a lab test that triggered the eICR)-->
+                                            <code code="27836007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Pertussis (disorder)" sdtc:valueSet="2.16.840.1.113762.1.4.1146.28" sdtc:valueSetVersion="19/05/2016" />
+                                            <statusCode code="completed" />
+                                            <component typeCode="COMP">
+
+                                                <observation classCode="OBS" moodCode="EVN">
+                                                    <!-- [RR R1S1] Reporting Timeframe-->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.14" extension="2017-04-01" />
+                                                    <id root="8334d0bd-a404-4e12-9e9c-e278669e59ba" />
+                                                    <code code="TEMP_CODE_TIMEFRAME" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Timeframe to report (urgency)" />
+                                                    <value xsi:type="CD" code="TEMP_CODE_24_HOURS" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Within 24 hours" />
+                                                </observation>
+                                            </component>
+                                            <component typeCode="COMP">
+                                                <observation classCode="OBS" moodCode="EVN">
+                                                    <!-- [RR R1S1] Reporting Action-->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.15" extension="2017-04-01" />
+                                                    <id root="264971e6-aa20-409f-a759-5ae40231b113" />
+                                                    <code code="TEMP_CODE_ACTION" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Reporting action" />
+                                                    <value xsi:type="CD" code="TEMP_CODE_REQUIRED" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Required" />
+                                                </observation>
+                                            </component>
+                                            <!-- This organizer contains external document references such as requests for supplemental information and contact information
+                                                 The references in this organizer should be rendered FIRST -->
+                                            <!-- This organizer contains external document references for Pertussis -->
+                                            <component>
+                                                <organizer classCode="CLUSTER" moodCode="EVN">
+                                                    <!-- [RR R1S1] External Reference Organizer -->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.16" extension="2017-04-01" />
+                                                    <id root="747f4887-4967-4a7e-aacc-94070afa9a6c" />
+                                                    <code code="TEMP_CODE_EXTERNAL_REFERENCES" displayName="External References" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                                                    <statusCode code="completed" />
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="1194e930-8040-45ff-a212-82ef3d161515" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_1194e930-8040-45ff-a212-82ef3d161515" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/sites/default/files/DC_ComDis-Disease-Reporting_Form.pdf" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="f35b1b90-2695-47ac-892c-cf4613faa710" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_f35b1b90-2695-47ac-892c-cf4613faa710" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.cdc.gov/vaccines/pubs/surv-manual/appx/appendix11-2-pertussis-wrsht.pdf" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="0ddae9f9-0dd5-40ed-a58a-a09a69fa7666" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_0ddae9f9-0dd5-40ed-a58a-a09a69fa7666" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Specimen-Collection.pdf" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+
+                                                </organizer>
+                                            </component>
+
+                                            <!-- This organizer contains additional external references for Persussi
+                                                 The references in this organizer should be rendered LAST and merged with references
+                                                 in any other Additional External Reference Organizers contained in this document -->
+                                            <component>
+                                                <organizer classCode="CLUSTER" moodCode="EVN">
+                                                    <!-- [RR R1S1] Additional External Reference Organizer -->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.18" extension="2017-04-01" />
+                                                    <id root="bbfc37e5-45e2-4a2e-845b-50f890ff630e" />
+                                                    <code code="TEMP_CODE_ADDITIONAL_EXTERNAL_REFERENCES" displayName="Additional External References" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                                                    <statusCode code="completed" />
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="000a4af2-99f7-4349-93e7-01bcdb1a761d" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_000a4af2-99f7-4349-93e7-01bcdb1a761d" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Guidance-on-the-Treatment-and-Prophylaxis-of-Pertussis-Cases-and-Contacts.pdf" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="68c5eb36-a0a2-46e4-b707-0ed569dfd022" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_68c5eb36-a0a2-46e4-b707-0ed569dfd022" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Information-and-Guidelines-for-Schools-and-Child-Care-Settings.pdf" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="b656fb21-c6fb-406a-ab76-e1427a07602b" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_b656fb21-c6fb-406a-ab76-e1427a07602b" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/cdphe/pertussis-data-and-statistics" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="5c5edc56-d467-413f-9917-1faf80fb7169" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_5c5edc56-d467-413f-9917-1faf80fb7169" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.cdc.gov/pertussis/index.html" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="b16e0bed-b3f8-4566-9964-99858b0893ec" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_b16e0bed-b3f8-4566-9964-99858b0893ec" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Information-Sheet.pdf" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="3990dccf-afc4-4008-9aa6-aafba6d142ab" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_3990dccf-afc4-4008-9aa6-aafba6d142ab" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Frequently-Asked-Questions.pdf" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="0b6108e9-b644-4a39-8c2f-b1018612e70c" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_0b6108e9-b644-4a39-8c2f-b1018612e70c" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/cdphe/outbreak-investigation-guidelines" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+                                                </organizer>
+                                            </component>
+                                        </organizer>
+                                    </component>
+
+                                    <!-- Condition 2 - Salmonellosis -->
+                                    <component typeCode="COMP">
+                                        <organizer classCode="CLUSTER" moodCode="EVN">
+                                            <!-- [RR R1S1] Reportable Condition Information Organizer -->
+                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.13" extension="2017-04-01" />
+                                            <id root="69aa7cbf-7d17-42da-8621-1dee02121ac8" />
+                                            <!-- Condition code (SNOMED CT) -->
+                                            <!-- **TODO** Do we want this to contain the RCTC value set and version? -->
+                                            <!-- **TODO** DO we want something that contains the original trigger code? (e.g. like this example 
+                                                  where it is not the condition, but a lab test that triggered the eICR)-->
+                                            <code code="90974009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Salmonellosis (except human typhoid and paratyphoid) (disorder)" sdtc:valueSet="2.16.840.1.113762.1.4.1146.28" sdtc:valueSetVersion="19/05/2016" />
+                                            <statusCode code="completed" />
+                                            <component typeCode="COMP">
+                                                <observation classCode="OBS" moodCode="EVN">
+                                                    <!-- [RR R1S1] Reporting Timeframe-->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.14" extension="2017-04-01" />
+                                                    <id root="8334d0bd-a404-4e12-9e9c-e278669e59ba" />
+                                                    <code code="TEMP_CODE_TIMEFRAME" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Timeframe to report (urgency)" />
+                                                    <value xsi:type="CD" code="TEMP_CODE_24_HOURS" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Within 24 hours" />
+                                                </observation>
+                                            </component>
+                                            <component typeCode="COMP">
+                                                <observation classCode="OBS" moodCode="EVN">
+                                                    <!-- [RR R1S1] Reporting Action-->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.15" extension="2017-04-01" />
+                                                    <id root="264971e6-aa20-409f-a759-5ae40231b113" />
+                                                    <code code="TEMP_CODE_ACTION" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Reporting action" />
+                                                    <value xsi:type="CD" code="TEMP_CODE_REQUIRED" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Required" />
+                                                </observation>
+                                            </component>
+                                            <!-- This organizer contains external document references such as requests for supplemental information and contact information
+                                                 The references in this organizer should be rendered FIRST -->
+                                            <!-- This organizer contains external document references for Salmonellosis -->
+                                            <component>
+                                                <organizer classCode="CLUSTER" moodCode="EVN">
+                                                    <!-- [RR R1S1] External Reference Organizer -->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.16" extension="2017-04-01" />
+                                                    <id root="747f4887-4967-4a7e-aacc-94070afa9a6c" />
+                                                    <code code="TEMP_CODE_EXTERNAL_REFERENCES" displayName="External References" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                                                    <statusCode code="completed" />
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="97a77697-b795-4b56-985f-b85d4f1b4691" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_97a77697-b795-4b56-985f-b85d4f1b4691" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/cdphe/report-a-disease" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="ec84fae2-d76f-4a91-9efb-4761e5d4267d" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_ec84fae2-d76f-4a91-9efb-4761e5d4267d" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/sites/default/files/DC_ComDis-Disease-Reporting_Form.pdf" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="af73f770-353b-4f6e-943f-19b79cb33d28" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_af73f770-353b-4f6e-943f-19b79cb33d28" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/cdphe/report-a-disease" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+
+                                                </organizer>
+                                            </component>
+
+                                            <!-- This organizer contains additional external references for Salmonellosis
+                                                 The references in this organizer should be rendered LAST and merged with references
+                                                 in any other Additional External Reference Organizers contained in this document -->
+                                            <component>
+                                                <organizer classCode="CLUSTER" moodCode="EVN">
+                                                    <!-- [RR R1S1] Additional External Reference Organizer -->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.18" extension="2017-04-01" />
+                                                    <id root="bbfc37e5-45e2-4a2e-845b-50f890ff630e" />
+                                                    <code code="TEMP_CODE_ADDITIONAL_EXTERNAL_REFERENCES" displayName="Additional External References" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                                                    <statusCode code="completed" />
+
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="0b6108e9-b644-4a39-8c2f-b1018612e70c" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_0b6108e9-b644-4a39-8c2f-b1018612e70c" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/cdphe/outbreak-investigation-guidelines" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="1e4f1ca1-3d17-484b-b85d-c53824a7ab34" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_1e4f1ca1-3d17-484b-b85d-c53824a7ab34" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/cdphe/foodborne-illness-data" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="a40b97aa-3016-4108-9129-c1d9c28ba892" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_a40b97aa-3016-4108-9129-c1d9c28ba892" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.cdc.gov/salmonella/index.html" /></text>
+                                                        </externalDocument>
+                                                    </reference>
+
+
+                                                </organizer>
+                                            </component>
+                                        </organizer>
+                                    </component>
+
+
+                                    <!-- This organizer contains additional external non-condition specific references
+                                                 The references in this organizer should be rendered LAST and merged with references
+                                                 in any other Additional External Reference Organizers contained in this document -->
+                                    <component>
+                                        <organizer classCode="CLUSTER" moodCode="EVN">
+                                            <!-- [RR R1S1] Additional External Reference Organizer -->
+                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.18" extension="2017-04-01" />
+                                            <id root="bbfc37e5-45e2-4a2e-845b-50f890ff630e" />
+                                            <code code="TEMP_CODE_ADDITIONAL_EXTERNAL_REFERENCES" displayName="Additional External References" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                                            <statusCode code="completed" />
+
+                                            <reference typeCode="REFR">
+                                                <externalDocument classCode="DOC" moodCode="EVN">
+                                                    <!-- [RR R1S1] External Reference -->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                    <id root="0b6108e9-b644-4a39-8c2f-b1018612e70c" />
+                                                    <code nullFlavor="OTH">
+                                                        <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                        <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_0b6108e9-b644-4a39-8c2f-b1018612e70c" /></originalText>
+                                                    </code>
+                                                    <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/cdphe/outbreak-investigation-guidelines" /></text>
+                                                </externalDocument>
+                                            </reference>
+                                        </organizer>
+                                    </component>
+                                </organizer>
+                            </entry>
+                        </section>
+                    </component>
+
+
+                </section>
+            </component>
+
+
+        </structuredBody>
+    </component>
+</ClinicalDocument>
