@@ -12,6 +12,11 @@
     <code value="SS" displayName="short stay" codeSystemName="HL7ActCode" codeSystem="2.16.840.1.113883.5.4" />
     <code value="VR" displayName="Virtual" codeSystemName="HL7ActCode" codeSystem="2.16.840.1.113883.5.4" />
   </system>
+  <system valueSetOid="2.16.840.1.113883.10.20.15.2.5.3" valueSetName="Determination of Reportability">
+    <code value="Y" displayName="Yes" codeSystemName="Yes/No Indicator (HL7 Table 0136)" codeSystem="2.16.840.1.113883.12.136" />
+    <code value="N" displayName="No" codeSystemName="Yes/No Indicator (HL7 Table 0136)" codeSystem="2.16.840.1.113883.12.136" />
+    <code value="TEMP_CODE_MAYBE" displayName="Maybe" codeSystemName="cdcNHSN" codeSystem="2.16.840.1.113883.6.277" />
+  </system>
   <system valueSetOid="2.16.840.1.114222.4.11.1066" valueSetName="Healthcare Provider Taxonomy (HIPAA)">
     <code value="171100000X" displayName="Acupuncturist" codeSystemName="Healthcare Provider Taxonomy (HIPAA)" codeSystem="2.16.840.1.113883.6.101" />
     <code value="363LA2100X" displayName="Nurse Practitioner - Acute Care" codeSystemName="Healthcare Provider Taxonomy (HIPAA)" codeSystem="2.16.840.1.113883.6.101" />
