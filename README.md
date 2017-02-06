@@ -44,7 +44,9 @@ Comments and suggestions can be sent to john.loonsk@cgifederal.com.
 
     * the "body" text contained in the narrative text of the “Reportability Response Summary Section” (all content in the <text></text> element of this section).
 
-* Visual guidance for the rendering of the RR for reporters and clinicians can be found in the Rendering Guide Appendix of the Implementation Guide (CDAR2_IG_PHCASERPT_RR_PT_2017_Rendering_Guidance_Appendix.docx). The narrative included in the CDA document is split into two main parts:
+* Visual guidance for the rendering of the RR for reporters and clinicians can be found in the Rendering Guide Appendix of the Implementation Guide (CDAR2_IG_PHCASERPT_RR_PT_2017_Vol3_Rendering_Guidance_Appendix.docx). Examples of the narrative CDA XML format can be found in the xml/samples folder and examples of the rendered narrative can be found in the xml/html folder. 
+
+* The narrative included in the CDA document is split into two main parts:
 
     * *Summary: * Includes descriptive text with information about the reportable condition(s), including additional information requests, reporting location(s) and action time frames. Below the descriptive text are table rows containing links/references that include forms for fulfillment of supplemental information requests, important guidance about the reportable condition and contact information.
 
@@ -86,9 +88,9 @@ One RR data element is "Reportability Status". This element will be important fo
 
 * CDAR2_IG_PHCASERPT_RR_PT_2017_Vol1_Introductory_Material.docx:                  Implementation Guide Introductory Material
 
-* CDAR2_IG_PHCASERPT_RR_PT_2017_Vol 2_Templates_and_Supporting_Material.docx: Implementation Guide Template Library and Supporting Material
+* CDAR2_IG_PHCASERPT_RR_PT_2017_Vol2_Templates_and_Supporting_Material.docx: Implementation Guide Template Library and Supporting Material
 
-* CDAR2_IG_PHCASERPT_RR_PT_2017_Rendering_Guidance_Appendix.docx: Guidance for rendering the RR CDA document
+* CDAR2_IG_PHCASERPT_RR_PT_2017_Vol3_Rendering_Guidance_Appendix.docx: Guidance for rendering the RR CDA document
 
 * xml/samples/CDAR2_IG_PHCASERPT_RR_PT_SAMPLE_REPORT_4.xml:                             XML Sample
 
@@ -98,9 +100,19 @@ One RR data element is "Reportability Status". This element will be important fo
 
 * xml/schematron/CDAR2_IG_PHCASERPT_RR_PT_VOC.xml: Vocabulary file used by Schematron for validation
 
+* xml/html: Rendered HTML corresponding to the sample files in xml/samples
+
 ## TODO
 
 * Include in the Reportability Response: some indication that the RCTC version used to generate an eICR is out of date.
 
 * Include the data model, mapping of data elements to the data model, template hierarchy, and mapping of data elements to CDA R2 templates in the RR Volume 1
+
+* Add examples to Volume 2 of the IG to add clarity around the narrative text content
+
+* Write custom Schematron for the creation of the narrative text in the Reportability Response Summary Section.
+
+* Include more information around Receiver Responsibilities in Volume 1.
+
+* Volume 3: Rendering Guidance Appendix
 
