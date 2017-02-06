@@ -48,17 +48,14 @@
     <!-- US Realm Header template -->
     <realmCode code="US" />
     <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3" />
-    <!-- **TODO** Does US Realm Header make sense here or is this too much info? -->
     <!-- [C-CDA R2.1] US Realm Header (V3) -->
     <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01" />
     <!-- [RR R1S1] Initial Public Health Case Report Reportability Response Document (RR) -->
-    <!-- **TODO** template id-->
     <templateId root="2.16.840.1.113883.10.20.15.2" extension="2017-04-01" />
     <!-- Globally unique document ID (extension) is scoped by vendor/software -->
     <id root="18218889-5d7d-47d4-b329-31bb1c28d3b3" />
     <!-- Document Code -->
-    <!-- **TODO** -->
-    <code code="55751-2" codeSystem="2.16.840.1.113883.6.1" displayName="Public Health Case Report" />
+    <code code="TEMP_CODE_REPORTABILITY_RESPONSE" codeSystem="2.16.840.1.113883.6.1" displayName="Reportabilty Response" />
     <title>Initial Public Health Case Report Reportability Response</title>
     <effectiveTime value="20161212094421-0700" />
     <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" displayName="Normal" />
@@ -105,14 +102,12 @@
                 <!-- If sdtc:deceasedInd is true then sdtc:deceasedTime must be present -->
                 <!-- HIMSS UC12 Death Date: n/a -->
                 <sdtc:deceasedInd value="false" />
-                <!-- **TODO** HIMSS UC12 Race: Hispanic (this is not a valid code - have set to "white") -->
                 <raceCode code="2106-3" codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC" displayName="White" />
                 <!-- HIMSS UC12 Ethncity: Latino -->
                 <ethnicGroupCode code="2135-2" codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC" displayName="Hispanic or Latino" />
                 <!-- HIMSS UC12 Preferred language: Spanish -->
                 <languageCommunication>
-                    <!-- **TODO** check that this code is correct -->
-                    <languageCode code="sp" />
+                    <languageCode code="es" />
                     <modeCode code="ESP" codeSystem="2.16.840.1.113883.5.60" codeSystemName="LanguageAbilityMode" displayName="Expressed spoken" />
                     <proficiencyLevelCode code="G" codeSystem="2.16.840.1.113883.5.61" codeSystemName="LanguageAbilityProficiency" displayName="Good" />
                     <!-- Preferred Language -->
@@ -126,7 +121,6 @@
         author
         ********************************************************
     -->
-    <!-- **TODO** -->
     <author>
         <time value="20161212100000-0700" />
         <assignedAuthor>
@@ -151,7 +145,6 @@
         custodian: The custodian of the CDA document is the generator of the document
         ********************************************************
     -->
-    <!-- **TODO** Who is the custodian?  -->
     <custodian>
         <assignedCustodian>
             <representedCustodianOrganization>
@@ -293,13 +286,14 @@
                 <section>
                     <!-- [RR R1S1] Reportability Response Short Description Section -->
                     <templateId root="2.16.840.1.113883.10.20.15.2.2.1" extension="2017-04-01" />
-                    <!-- **TODO** LOINC code needed -->
                     <code code="TEMP_CODE_DESCRIPTION_SECTION" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Reportability Response Short Description" />
 
                     <text>
                         <!-- paragraph/content/@ID contains the id of the template that references it, prefixed with "ref_" -->
-                        <paragraph><content ID="ref_c62d8411-27a3-4d22-9ddb-a4998faea87a"><content styleCode="Bold">Reportable condition notification:</content>  An initial report for Pertussis and Salmonellosis has been sent to the Colorado Department of Public Health and Environment and New Jersey Department of Health.</content></paragraph>
+                        <paragraph><content ID="ref_c62d8411-27a3-4d22-9ddb-a4998faea87a"><content styleCode="Emphasis"><content styleCode="Bold">Reportable condition notification:</content>  An initial report for Pertussis and Salmonellosis has been sent to the Colorado Department of Public Health and Environment and New Jersey Department of Health.</content></content></paragraph>
+                        <br />
                     </text>
+
                     <!-- Reportability Response Short Description -->
                     <entry typeCode="DRIV">
                         <act classCode="ACT" moodCode="INT">
@@ -308,7 +302,7 @@
                             <!-- [RR R1S1] Reportability Response Short Description -->
                             <templateId root="2.16.840.1.113883.10.20.15.2.3.7" extension="2017-04-01" />
                             <id root="c62d8411-27a3-4d22-9ddb-a4998faea87a" />
-                            <!-- **TODO** Not sure about code... -->
+                            <!-- **TODO** Code? -->
                             <code code="131195008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Subject of information" />
                             <!-- The text/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
                             <text><reference value="#ref_c62d8411-27a3-4d22-9ddb-a4998faea87a" /></text>
@@ -326,7 +320,7 @@
                 <section>
                     <!-- [RR R1S1] Reportability Response Summary Section -->
                     <templateId root="2.16.840.1.113883.10.20.15.2.2.2" extension="2017-04-01" />
-                    <!-- **TODO** LOINC: The essence of the document -->
+                    <!-- **TODO** Code? -->
                     <!-- Could also use: 68608-9 Summary note (this doesn't seem to have a description -->
                     <!-- Could also request a new code for Reportability Response Summary -->
                     <code code="55112-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Document Summary" />
@@ -338,24 +332,27 @@
                             <col width="60%" />
 
                             <tbody>
-                                <tr>
+                                <tr ID="ref_2.16.840.1.113883.10.20.15.2.3.10">
                                     <td>eICR Identifier</td>
                                     <td>ca316e79-aaf2-4e8c-aa5f-848093bb8bb1</td>
                                 </tr>
                             </tbody>
                         </table>
+                        <!-- The following paragraph must be Bold and is hard coded to "Summary:" -->
                         <paragraph><content styleCode="Bold">Summary:</content></paragraph>
                         <!-- paragraph/content/@ID contains the value of the id/@root of the Reportability Response Summary template, prefixed with "ref_".
                              The Reportability Response Summary template references this narrative -->
                         <paragraph><content ID="ref_7a0ed3d3-16f3-4fa9-bac5-882f5c7d44b8"
                                 >An initial case report was electronically submitted by your organization to determine if a patient has a public health reportable condition.  The conditions of Pertussis and Salmonellosis were identified and are reportable conditions in Colorado and New Jersey. Additional information needs be submitted to the Colorado Department of Public Health and Environment for the report of Pertussis within 24 hours and for Salmonellosis within 7 days. The initial case report was forwarded to the Colorado Department of Public Health and Environment and the New Jersey Department of Health.</content></paragraph>
-                        <!-- External References (Pertussis) -->
+                        <!-- External References (CO/Pertussis) -->
+                        <!-- There shall be one table containing all the values from all the External Document Reference Organizers
+                             in the document. Each organizer has a single <tbody> and each reference template has a single <tr> -->
                         <table>
-                            <!--  <caption>Pertussis supplemental information/lab test requests</caption>-->
                             <col width="40%" />
                             <col width="60%" />
-
-                            <tbody>
+                            <!-- There shall be one <tbody> corresponding to each Reportable Condition Information Organizer/External Reference Organizer
+                             the tbody/@ID contains the value of the id/@root of the External Reference Organizer, prefixed with "ref_" -->
+                            <tbody ID="ref_747f4887-4967-4a7e-aacc-94070afa9a6c">
                                 <tr>
                                     <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
                                     <!-- The External Reference template references this narrative -->
@@ -377,19 +374,14 @@
                                 <tr>
                                     <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
                                     <!-- The External Reference template references this narrative -->
-                                    <td><content ID="ref_97a77697-b795-4b56-985f-b85d4f1b4691">If you have additional questions regarding Pertussis or reporting, contact information for the Colorado Department of Health is available here:</content></td>
+                                    <td><content ID="ref_0a59e2e3-05f4-4d3f-b13e-a7caf23d676f">If you have additional questions regarding Pertussis or reporting, contact information for the Colorado Department of Health is available here:</content></td>
                                     <td><linkHtml href="https://www.colorado.gov/pacific/cdphe/report-a-disease">https://www.colorado.gov/pacific/cdphe/report-a-disease</linkHtml></td>
                                 </tr>
                             </tbody>
-                        </table>
-                        <br />
-                        <!-- External References (Salmonellosis) -->
-                        <table>
-                            <!--  <caption>Salmonellosis supplemental information/lab test requests</caption>-->
-                            <col width="40%" />
-                            <col width="60%" />
-
-                            <tbody>
+                            <!-- External References (CO/Salmonellosis) -->
+                            <!-- There shall be one <tbody> corresponding to each Reportable Condition Information Organizer/External Reference Organizer
+                             the tbody/@ID contains the value of the id/@root of the External Reference Organizer, prefixed with "ref_" -->
+                            <tbody ID="f9de8b15-b47f-49af-b3a6-18a3e3dbbc8c">
                                 <tr>
                                     <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
                                     <!-- The External Reference template references this narrative -->
@@ -406,13 +398,16 @@
                         </table>
                         <br />
                         <br />
-                        <!-- Additional References -->
+                        <!-- Additional References (CO/Pertussis) -->
+                        <!-- There shall be one <table> containing all the values from all the Additional External Document Reference Organizers
+                             in the document. Each organizer has a single <tbody> and each reference template has a single <tr> -->
                         <table>
                             <caption>Additional References</caption>
                             <col width="40%" />
                             <col width="60%" />
-
-                            <tbody>
+                            <!-- There SHALL be one <tbody> corresponding to each Reportable Condition Information Organizer/Additional External Reference Organizer
+                             the tbody/@ID contains the value of the id/@root of the Additional External Reference Organizer, prefixed with "ref_" -->
+                            <tbody ID="ref_bbfc37e5-45e2-4a2e-845b-50f890ff630e">
                                 <tr>
                                     <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
                                     <!-- The External Reference template references this narrative -->
@@ -449,12 +444,11 @@
                                     <td><content ID="ref_3990dccf-afc4-4008-9aa6-aafba6d142ab">Frequently asked questions</content></td>
                                     <td><linkHtml href="https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Frequently-Asked-Questions.pdf">https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Frequently-Asked-Questions.pdf</linkHtml></td>
                                 </tr>
-                                <tr>
-                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
-                                    <!-- The External Reference template references this narrative -->
-                                    <td><content ID="ref_0b6108e9-b644-4a39-8c2f-b1018612e70c">Guidelines for gastrointestinal outbreaks</content></td>
-                                    <td><linkHtml href="https://www.colorado.gov/pacific/cdphe/outbreak-investigation-guidelines">https://www.colorado.gov/pacific/cdphe/outbreak-investigation-guidelines</linkHtml></td>
-                                </tr>
+                            </tbody>
+                            <!-- Additional References (CO/Salmonellosis) -->
+                            <!-- There SHALL be one <tbody> corresponding to each Reportable Condition Information Organizer/Additional External Reference Organizer
+                             the tbody/@ID contains the value of the id/@root of the External Reference Organizer, prefixed with "ref_" -->
+                            <tbody ID="ref_1a474a5d-28c7-4a1e-8a80-47cf55189144">
                                 <tr>
                                     <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
                                     <!-- The External Reference template references this narrative -->
@@ -466,6 +460,17 @@
                                     <!-- The External Reference template references this narrative -->
                                     <td><content ID="ref_a40b97aa-3016-4108-9129-c1d9c28ba892">CDC website for Salmonellosis</content></td>
                                     <td><linkHtml href="https://www.cdc.gov/salmonella/index.html">https://www.cdc.gov/salmonella/index.html</linkHtml></td>
+                                </tr>
+                            </tbody>
+                            <!-- Additional References (CO/General) -->
+                            <!-- There SHALL be one <tbody> corresponding to each Reportable Condition Information Organizer/Additional External Reference Organizer
+                             the tbody/@ID contains the value of the id/@root of the External Reference Organizer, prefixed with "ref_" -->
+                            <tbody ID="ref_4e781705-29e1-4ad8-947c-3ce104b92844">
+                                <tr>
+                                    <!-- td/content/@ID contains the value of the id/@root of the  External Reference template, prefixed with "ref_" -->
+                                    <!-- The External Reference template references this narrative -->
+                                    <td><content ID="ref_0b6108e9-b644-4a39-8c2f-b1018612e70c">Guidelines for gastrointestinal outbreaks</content></td>
+                                    <td><linkHtml href="https://www.colorado.gov/pacific/cdphe/outbreak-investigation-guidelines">https://www.colorado.gov/pacific/cdphe/outbreak-investigation-guidelines</linkHtml></td>
                                 </tr>
 
                             </tbody>
@@ -481,7 +486,7 @@
                             <!-- [RR R1S1] Reportability Response Summary -->
                             <templateId root="2.16.840.1.113883.10.20.15.2.3.8" extension="2017-04-01" />
                             <id root="7a0ed3d3-16f3-4fa9-bac5-882f5c7d44b8" />
-                            <!-- **TODO** Probably not the right code -->
+                            <!-- **TODO** Code? -->
                             <!-- Consider 385820004 : Infection control education -->
                             <code code="304561000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Informing health care professional (procedure)" />
                             <!-- The text/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
@@ -489,16 +494,7 @@
                             <statusCode code="completed" />
                         </act>
                     </entry>
-                    <!--<!-\- Reportability Response References -\->
-                    <entry typeCode="DRIV">
-                        <act classCode="ACT" moodCode="INT">
-                            <templateId root="2.16.840.1.113883.10.20.15.2.3.77777" extension="2017-04-01" />
-                            <!-\- **TODO** Probably not the right code -\->
-                            <!-\- Consider 385820004 : Infection control education -\->
-                            <code code="TEMP_CODE_REFERENCES" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="References" />
-                            <text><reference value="#references" /></text>
-                        </act>
-                    </entry>-->
+
                     <!--
                         ********************************************************
                         Electronic Initial Case Report Section
@@ -508,14 +504,12 @@
                         <section>
                             <!-- [RR R1S1] Electronic Initial Case Report Section -->
                             <templateId root="2.16.840.1.113883.10.20.15.2.2.3" extension="2017-04-01" />
-                            <!-- **TODO** Request LOINC code -->
                             <code code="TEMP_CODE_EICR_SECTION" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Electronic Intial Case Report Section" />
                             <entry>
                                 <act classCode="ACT" moodCode="INT">
                                     <!-- [RR R1S1] Received eICR Information -->
                                     <templateId root="2.16.840.1.113883.10.20.15.2.3.9" extension="2017-04-01" />
                                     <id root="6bff7990-f218-4f9d-a5aa-eb7afa6e9a3c" />
-                                    <!-- **TODO** Get code -->
                                     <code code="TEMP_CODE_eICR_INFO" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Received eICR Information" />
 
                                     <statusCode code="completed" />
@@ -551,12 +545,10 @@
                     -->
                     <component>
                         <section>
-                            <!-- **TODO** Doubt it, but double check to see if there is a C-CDA section we can use -->
                             <!-- [RR R1S1] Initial Public Health Case Report Reportability Response Document (RR) -->
-                            <!-- **TODO** Template Id -->
                             <templateId root="2.16.840.1.113883.10.20.15.2.2.4" extension="2017-04-01" />
-                            <!-- **TODO** Need new LOINC code -->
                             <code code="TEMP_CODE_CODED_INFO_SECTION" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Reportability Response Coded Information" />
+                            <!-- Reportability Response Report Status -->
                             <entry typeCode="COMP">
                                 <observation classCode="OBS" moodCode="EVN">
                                     <!-- [RR R1S1] Reportability Response Report Status -->
@@ -566,10 +558,10 @@
                                     <value xsi:type="CD" code="TEMP_CODE_REPORT_4" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Reportable – multiple conditions/multiple jurisdictions" />
                                 </observation>
                             </entry>
+                            <!-- Reporting Jurisdiction Organizer: CO -->
                             <entry typeCode="COMP">
-                                <!-- Jurisdiction Organizer - CO -->
                                 <organizer classCode="CLUSTER" moodCode="EVN">
-                                    <!-- [RR R1S1] Reporting Jurisdiction Organizer -->
+                                    <!-- [RR R1S1] Reporting Jurisdiction Organizer: CO -->
                                     <templateId root="2.16.840.1.113883.10.20.15.2.3.12" extension="2017-04-01" />
                                     <id root="fcf92143-4289-450e-9550-8d574facf626" />
                                     <!-- Jurisdiction code (state for now) -->
@@ -577,18 +569,17 @@
                                         <originalText>Colorado Department of Public Health and Environment</originalText>
                                     </code>
                                     <statusCode code="completed" />
-                                    <!-- Condition 1 - Pertussis -->
+
+                                    <!-- Reportable Condition Information Organizer: CO/Pertussis -->
                                     <component typeCode="COMP">
                                         <organizer classCode="CLUSTER" moodCode="EVN">
-                                            <!-- [RR R1S1] Reportable Condition Information Organizer -->
+                                            <!-- [RR R1S1] Reportable Condition Information Organizer: CO/Pertussis -->
                                             <templateId root="2.16.840.1.113883.10.20.15.2.3.13" extension="2017-04-01" />
                                             <id root="69aa7cbf-7d17-42da-8621-1dee02121ac8" />
                                             <!-- Condition code (SNOMED CT) -->
-                                            <!-- **TODO** Do we want this to contain the RCTC value set and version? -->
-                                            <!-- **TODO** DO we want something that contains the original trigger code? (e.g. like this example 
-                                                  where it is not the condition, but a lab test that triggered the eICR)-->
                                             <code code="27836007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Pertussis (disorder)" sdtc:valueSet="2.16.840.1.113762.1.4.1146.28" sdtc:valueSetVersion="19/05/2016" />
                                             <statusCode code="completed" />
+                                            <!-- Reporting Location: Colorado Department of Public Health and Environment -->
                                             <participant typeCode="LOC">
                                                 <participantRole>
                                                     <id extension="12341234" root="2.16.840.1.113883.4.6" />
@@ -608,27 +599,9 @@
                                                     </playingEntity>
                                                 </participantRole>
                                             </participant>
-                                            <participant typeCode="LOC">
-                                                <participantRole>
-                                                    <id extension="12341234" root="2.16.840.1.113883.4.6" />
-                                                    <addr use="H"> Trenton, NJ 08608-2308
-                                                        <streetAddressLine>369 South Warren Street</streetAddressLine>
-                                                        <city>Trenton</city>
-                                                        <state>NJ</state>
-                                                        <postalCode>08608-2308</postalCode>
-                                                    </addr>
-                                                    <telecom use="WP" value="tel:+1-609-588-9848" />
-                                                    <telecom use="WP" value="fax:+1-609-588-5454" />
-                                                    <telecom use="WP" value="mailto:mail@nj.com" />
-                                                    <telecom use="WP" value="https://www.nj.gov/health" />
-                                                    <playingEntity>
-                                                        <name>New Jersey Department of Health</name>
-                                                        <desc>Routing Location Description</desc>
-                                                    </playingEntity>
-                                                </participantRole>
-                                            </participant>
+
+                                            <!-- Determination of Reportability: CO/Pertussis -->
                                             <component typeCode="COMP">
-                                                
                                                 <observation classCode="OBS" moodCode="EVN">
                                                     <!-- [RR R1S1] Determination of Reportability -->
                                                     <templateId root="2.16.840.1.113883.10.20.15.2.3.19" extension="2017-04-01" />
@@ -637,8 +610,9 @@
                                                     <value xsi:type="CD" code="Y" displayName="Yes" codeSystem="2.16.840.1.114222.4.11.819" codeSystemName="Yes/No Indicator (HL7)" />
                                                 </observation>
                                             </component>
-                                            <component typeCode="COMP">
 
+                                            <!-- Reporting Timeframe: CO/Pertussis -->
+                                            <component typeCode="COMP">
                                                 <observation classCode="OBS" moodCode="EVN">
                                                     <!-- [RR R1S1] Reporting Timeframe-->
                                                     <templateId root="2.16.840.1.113883.10.20.15.2.3.14" extension="2017-04-01" />
@@ -647,6 +621,8 @@
                                                     <value xsi:type="CD" code="TEMP_CODE_24_HOURS" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Within 24 hours" />
                                                 </observation>
                                             </component>
+
+                                            <!-- Reporting Action: CO/Pertussis -->
                                             <component typeCode="COMP">
                                                 <observation classCode="OBS" moodCode="EVN">
                                                     <!-- [RR R1S1] Reporting Action-->
@@ -656,9 +632,12 @@
                                                     <value xsi:type="CD" code="TEMP_CODE_REQUIRED" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Required" />
                                                 </observation>
                                             </component>
+
                                             <!-- This organizer contains external document references such as requests for supplemental information and contact information
-                                                 The references in this organizer should be rendered FIRST -->
+                                                 The references in this organizer should be rendered FIRST at the same place in the narrative as the references from this
+                                                 organizer for any other conditions contained in the document-->
                                             <!-- This organizer contains external document references for Pertussis -->
+                                            <!-- External Document Reference Organizer: CO/Pertussis -->
                                             <component>
                                                 <organizer classCode="CLUSTER" moodCode="EVN">
                                                     <!-- [RR R1S1] External Reference Organizer -->
@@ -702,13 +681,26 @@
                                                             <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Specimen-Collection.pdf" /></text>
                                                         </externalDocument>
                                                     </reference>
+                                                    <reference typeCode="REFR">
+                                                        <externalDocument classCode="DOC" moodCode="EVN">
+                                                            <!-- [RR R1S1] External Reference -->
+                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
+                                                            <id root="0a59e2e3-05f4-4d3f-b13e-a7caf23d676f" />
+                                                            <code nullFlavor="OTH">
+                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
+                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_0a59e2e3-05f4-4d3f-b13e-a7caf23d676f" /></originalText>
+                                                            </code>
+                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/cdphe/report-a-disease" /></text>
+                                                        </externalDocument>
+                                                    </reference>
 
                                                 </organizer>
                                             </component>
 
-                                            <!-- This organizer contains additional external references for Persussi
+                                            <!-- This organizer contains additional external references for Persussis
                                                  The references in this organizer should be rendered LAST and merged with references
                                                  in any other Additional External Reference Organizers contained in this document -->
+                                            <!-- Additional External Reference Organizer: CO/Pertussis -->
                                             <component>
                                                 <organizer classCode="CLUSTER" moodCode="EVN">
                                                     <!-- [RR R1S1] Additional External Reference Organizer -->
@@ -788,35 +780,23 @@
                                                             <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/sites/default/files/DC_CD_VPD-Pertussis-Frequently-Asked-Questions.pdf" /></text>
                                                         </externalDocument>
                                                     </reference>
-                                                    <reference typeCode="REFR">
-                                                        <externalDocument classCode="DOC" moodCode="EVN">
-                                                            <!-- [RR R1S1] External Reference -->
-                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
-                                                            <id root="0b6108e9-b644-4a39-8c2f-b1018612e70c" />
-                                                            <code nullFlavor="OTH">
-                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
-                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_0b6108e9-b644-4a39-8c2f-b1018612e70c" /></originalText>
-                                                            </code>
-                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/cdphe/outbreak-investigation-guidelines" /></text>
-                                                        </externalDocument>
-                                                    </reference>
+
                                                 </organizer>
                                             </component>
                                         </organizer>
                                     </component>
 
-                                    <!-- Condition 2 - Salmonellosis -->
+                                    <!-- Reportable Condition Information Organizer: CO/Salmonellosis -->
                                     <component typeCode="COMP">
                                         <organizer classCode="CLUSTER" moodCode="EVN">
                                             <!-- [RR R1S1] Reportable Condition Information Organizer -->
                                             <templateId root="2.16.840.1.113883.10.20.15.2.3.13" extension="2017-04-01" />
                                             <id root="69aa7cbf-7d17-42da-8621-1dee02121ac8" />
                                             <!-- Condition code (SNOMED CT) -->
-                                            <!-- **TODO** Do we want this to contain the RCTC value set and version? -->
-                                            <!-- **TODO** DO we want something that contains the original trigger code? (e.g. like this example 
-                                                  where it is not the condition, but a lab test that triggered the eICR)-->
                                             <code code="90974009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Salmonellosis (except human typhoid and paratyphoid) (disorder)" sdtc:valueSet="2.16.840.1.113762.1.4.1146.28" sdtc:valueSetVersion="19/05/2016" />
                                             <statusCode code="completed" />
+
+                                            <!-- Routing Location: Colorado Department of Public Health and Environment -->
                                             <participant typeCode="LOC">
                                                 <participantRole>
                                                     <id extension="12341234" root="2.16.840.1.113883.4.6" />
@@ -836,27 +816,9 @@
                                                     </playingEntity>
                                                 </participantRole>
                                             </participant>
-                                            <participant typeCode="LOC">
-                                                <participantRole>
-                                                    <id extension="12341234" root="2.16.840.1.113883.4.6" />
-                                                    <addr use="H"> Trenton, NJ 08608-2308
-                                                        <streetAddressLine>369 South Warren Street</streetAddressLine>
-                                                        <city>Trenton</city>
-                                                        <state>NJ</state>
-                                                        <postalCode>08608-2308</postalCode>
-                                                    </addr>
-                                                    <telecom use="WP" value="tel:+1-609-588-9848" />
-                                                    <telecom use="WP" value="fax:+1-609-588-5454" />
-                                                    <telecom use="WP" value="mailto:mail@nj.com" />
-                                                    <telecom use="WP" value="https://www.nj.gov/health" />
-                                                    <playingEntity>
-                                                        <name>New Jersey Department of Health</name>
-                                                        <desc>Routing Location Description</desc>
-                                                    </playingEntity>
-                                                </participantRole>
-                                            </participant>
+
+                                            <!-- Determination of Reportability: CO/Salmonellosis -->
                                             <component typeCode="COMP">
-                                                
                                                 <observation classCode="OBS" moodCode="EVN">
                                                     <!-- [RR R1S1] Determination of Reportability -->
                                                     <templateId root="2.16.840.1.113883.10.20.15.2.3.19" extension="2017-04-01" />
@@ -865,6 +827,8 @@
                                                     <value xsi:type="CD" code="Y" displayName="Yes" codeSystem="2.16.840.1.113883.12.136" codeSystemName="Yes/No Indicator (HL7 Table 0136)" />
                                                 </observation>
                                             </component>
+
+                                            <!-- Reporting Timeframe: CO/Salmonellosis -->
                                             <component typeCode="COMP">
                                                 <observation classCode="OBS" moodCode="EVN">
                                                     <!-- [RR R1S1] Reporting Timeframe-->
@@ -874,6 +838,8 @@
                                                     <value xsi:type="CD" code="TEMP_CODE_24_HOURS" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Within 24 hours" />
                                                 </observation>
                                             </component>
+
+                                            <!-- Reporting Action: CO/Salmonellosis -->
                                             <component typeCode="COMP">
                                                 <observation classCode="OBS" moodCode="EVN">
                                                     <!-- [RR R1S1] Reporting Action-->
@@ -883,14 +849,16 @@
                                                     <value xsi:type="CD" code="TEMP_CODE_REQUIRED" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Required" />
                                                 </observation>
                                             </component>
+
                                             <!-- This organizer contains external document references such as requests for supplemental information and contact information
-                                                 The references in this organizer should be rendered FIRST -->
-                                            <!-- This organizer contains external document references for Salmonellosis -->
+                                                 The references in this organizer should be rendered FIRST at the same place in the narrative as the references from this
+                                                 organizer for any other conditions contained in the document-->
+                                            <!-- External Reference Organizer: CO/Salmonellosis -->
                                             <component>
                                                 <organizer classCode="CLUSTER" moodCode="EVN">
                                                     <!-- [RR R1S1] External Reference Organizer -->
                                                     <templateId root="2.16.840.1.113883.10.20.15.2.3.16" extension="2017-04-01" />
-                                                    <id root="747f4887-4967-4a7e-aacc-94070afa9a6c" />
+                                                    <id root="f9de8b15-b47f-49af-b3a6-18a3e3dbbc8c" />
                                                     <code code="TEMP_CODE_EXTERNAL_REFERENCES" displayName="External References" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
                                                     <statusCode code="completed" />
                                                     <reference typeCode="REFR">
@@ -936,26 +904,14 @@
                                             <!-- This organizer contains additional external references for Salmonellosis
                                                  The references in this organizer should be rendered LAST and merged with references
                                                  in any other Additional External Reference Organizers contained in this document -->
+                                            <!-- Additional External Reference Organizer: CO/Salmonellosis -->
                                             <component>
                                                 <organizer classCode="CLUSTER" moodCode="EVN">
                                                     <!-- [RR R1S1] Additional External Reference Organizer -->
                                                     <templateId root="2.16.840.1.113883.10.20.15.2.3.18" extension="2017-04-01" />
-                                                    <id root="bbfc37e5-45e2-4a2e-845b-50f890ff630e" />
+                                                    <id root="1a474a5d-28c7-4a1e-8a80-47cf55189144" />
                                                     <code code="TEMP_CODE_ADDITIONAL_EXTERNAL_REFERENCES" displayName="Additional External References" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
                                                     <statusCode code="completed" />
-
-                                                    <reference typeCode="REFR">
-                                                        <externalDocument classCode="DOC" moodCode="EVN">
-                                                            <!-- [RR R1S1] External Reference -->
-                                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.17" extension="2017-04-01" />
-                                                            <id root="0b6108e9-b644-4a39-8c2f-b1018612e70c" />
-                                                            <code nullFlavor="OTH">
-                                                                <!-- The originalText/reference/@value is id/@root prefixed with "#ref_" and points up into the narrative -->
-                                                                <originalText mediaType="text/x-hl7-text+xml"><reference value="#ref_0b6108e9-b644-4a39-8c2f-b1018612e70c" /></originalText>
-                                                            </code>
-                                                            <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/cdphe/outbreak-investigation-guidelines" /></text>
-                                                        </externalDocument>
-                                                    </reference>
                                                     <reference typeCode="REFR">
                                                         <externalDocument classCode="DOC" moodCode="EVN">
                                                             <!-- [RR R1S1] External Reference -->
@@ -980,25 +936,22 @@
                                                             <text mediaType="text/html"><reference value="https://www.cdc.gov/salmonella/index.html" /></text>
                                                         </externalDocument>
                                                     </reference>
-
-
                                                 </organizer>
                                             </component>
                                         </organizer>
                                     </component>
 
-
-                                    <!-- This organizer contains additional external non-condition specific references
-                                                 The references in this organizer should be rendered LAST and merged with references
-                                                 in any other Additional External Reference Organizers contained in this document -->
+                                    <!-- This organizer contains additional external jurisdiction non-condition specific references
+                                         The references in this organizer should be rendered LAST and with references
+                                         in any other Additional External Reference Organizers contained in this document -->
+                                    <!-- Additional External Reference Organizer: CO -->
                                     <component>
                                         <organizer classCode="CLUSTER" moodCode="EVN">
                                             <!-- [RR R1S1] Additional External Reference Organizer -->
                                             <templateId root="2.16.840.1.113883.10.20.15.2.3.18" extension="2017-04-01" />
-                                            <id root="bbfc37e5-45e2-4a2e-845b-50f890ff630e" />
+                                            <id root="4e781705-29e1-4ad8-947c-3ce104b92844" />
                                             <code code="TEMP_CODE_ADDITIONAL_EXTERNAL_REFERENCES" displayName="Additional External References" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
                                             <statusCode code="completed" />
-
                                             <reference typeCode="REFR">
                                                 <externalDocument classCode="DOC" moodCode="EVN">
                                                     <!-- [RR R1S1] External Reference -->
@@ -1011,6 +964,146 @@
                                                     <text mediaType="text/html"><reference value="https://www.colorado.gov/pacific/cdphe/outbreak-investigation-guidelines" /></text>
                                                 </externalDocument>
                                             </reference>
+                                        </organizer>
+                                    </component>
+                                </organizer>
+                            </entry>
+
+                            <!-- Reporting Jurisdiction Organizer: NJ -->
+                            <entry typeCode="COMP">
+                                <organizer classCode="CLUSTER" moodCode="EVN">
+                                    <!-- [RR R1S1] Reporting Jurisdiction Organizer -->
+                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.12" extension="2017-04-01" />
+                                    <id root="90513c9e-3aa8-43e3-8c1c-f3bf644ba77b" />
+                                    <!-- Jurisdiction code (state for now) -->
+                                    <code code="NJ" codeSystem="2.16.840.1.113883.6.92" codeSystemName="FIPS 5-2 (State)" displayName="New Jersey">
+                                        <originalText>New Jersey Department of Health</originalText>
+                                    </code>
+                                    <statusCode code="completed" />
+                                    <!-- Reportable Condition Information Organizer: NJ/Pertussis -->
+                                    <component typeCode="COMP">
+                                        <organizer classCode="CLUSTER" moodCode="EVN">
+                                            <!-- [RR R1S1] Reportable Condition Information Organizer -->
+                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.13" extension="2017-04-01" />
+                                            <id root="c37fe344-b2d9-4d76-a7d4-4d407f54d3ad" />
+                                            <!-- Condition code (SNOMED CT) -->
+                                            <code code="27836007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Pertussis (disorder)" sdtc:valueSet="2.16.840.1.113762.1.4.1146.28" sdtc:valueSetVersion="19/05/2016" />
+                                            <statusCode code="completed" />
+                                            <!-- Routing Location: NJ Department of Health -->
+                                            <participant typeCode="LOC">
+                                                <participantRole>
+                                                    <id extension="12341234" root="2.16.840.1.113883.4.6" />
+                                                    <addr use="H">
+                                                        <streetAddressLine>369 South Warren Street</streetAddressLine>
+                                                        <city>Trenton</city>
+                                                        <state>NJ</state>
+                                                        <postalCode>08608-2308</postalCode>
+                                                    </addr>
+                                                    <telecom use="WP" value="tel:+1-609-588-9848" />
+                                                    <telecom use="WP" value="fax:+1-609-588-5454" />
+                                                    <telecom use="WP" value="mailto:mail@nj.com" />
+                                                    <telecom use="WP" value="https://www.nj.gov/health" />
+                                                    <playingEntity>
+                                                        <name>New Jersey Department of Health</name>
+                                                        <desc>Routing Location Description</desc>
+                                                    </playingEntity>
+                                                </participantRole>
+                                            </participant>
+
+                                            <!-- Determination of Reportability: NJ/Pertussis -->
+                                            <component typeCode="COMP">
+                                                <observation classCode="OBS" moodCode="EVN">
+                                                    <!-- [RR R1S1] Determination of Reportability -->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.19" extension="2017-04-01" />
+                                                    <id root="786b5ded-97f9-4bc2-859f-e1246b33895b" />
+                                                    <code code="TEMP_CODE_DETERMINATION_OF_REPORTABILITY" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Determination of reportability" />
+                                                    <value xsi:type="CD" code="Y" displayName="Yes" codeSystem="2.16.840.1.114222.4.11.819" codeSystemName="Yes/No Indicator (HL7)" />
+                                                </observation>
+                                            </component>
+
+                                            <!-- Reporting Timeframe: NJ/Pertussis -->
+                                            <component typeCode="COMP">
+                                                <observation classCode="OBS" moodCode="EVN">
+                                                    <!-- [RR R1S1] Reporting Timeframe-->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.14" extension="2017-04-01" />
+                                                    <id root="947b305a-cee2-4321-92e2-80e37dd93aa8" />
+                                                    <code code="TEMP_CODE_TIMEFRAME" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Timeframe to report (urgency)" />
+                                                    <value xsi:type="CD" code="TEMP_CODE_24_HOURS" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Within 24 hours" />
+                                                </observation>
+                                            </component>
+
+                                            <!-- Reporting Action: NJ/Pertussis -->
+                                            <component typeCode="COMP">
+                                                <observation classCode="OBS" moodCode="EVN">
+                                                    <!-- [RR R1S1] Reporting Action-->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.15" extension="2017-04-01" />
+                                                    <id root="d86d00f3-7216-4544-bb26-47b0979c83e7" />
+                                                    <code code="TEMP_CODE_ACTION" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Reporting action" />
+                                                    <value xsi:type="CD" code="TEMP_CODE_REQUIRED" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Required" />
+                                                </observation>
+                                            </component>
+                                        </organizer>
+                                    </component>
+
+                                    <!-- Reportable Condition Information Organizer: NJ/Salmonellosis -->
+                                    <component typeCode="COMP">
+                                        <organizer classCode="CLUSTER" moodCode="EVN">
+                                            <!-- [RR R1S1] Reportable Condition Information Organizer -->
+                                            <templateId root="2.16.840.1.113883.10.20.15.2.3.13" extension="2017-04-01" />
+                                            <id root="69aa7cbf-7d17-42da-8621-1dee02121ac8" />
+                                            <!-- Condition code (SNOMED CT) -->
+                                            <code code="90974009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Salmonellosis (except human typhoid and paratyphoid) (disorder)" sdtc:valueSet="2.16.840.1.113762.1.4.1146.28" sdtc:valueSetVersion="19/05/2016" />
+                                            <statusCode code="completed" />
+                                            <!-- Routing Location: NJ Department of Health -->
+                                            <participant typeCode="LOC">
+                                                <participantRole>
+                                                    <id extension="12341234" root="2.16.840.1.113883.4.6" />
+                                                    <addr use="H">
+                                                        <streetAddressLine>369 South Warren Street</streetAddressLine>
+                                                        <city>Trenton</city>
+                                                        <state>NJ</state>
+                                                        <postalCode>08608-2308</postalCode>
+                                                    </addr>
+                                                    <telecom use="WP" value="tel:+1-609-588-9848" />
+                                                    <telecom use="WP" value="fax:+1-609-588-5454" />
+                                                    <telecom use="WP" value="mailto:mail@nj.com" />
+                                                    <telecom use="WP" value="https://www.nj.gov/health" />
+                                                    <playingEntity>
+                                                        <name>New Jersey Department of Health</name>
+                                                        <desc>Routing Location Description</desc>
+                                                    </playingEntity>
+                                                </participantRole>
+                                            </participant>
+                                            <!-- Determination of Reportability: NJ/Salmonellosis -->
+                                            <component typeCode="COMP">
+                                                <observation classCode="OBS" moodCode="EVN">
+                                                    <!-- [RR R1S1] Determination of Reportability -->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.19" extension="2017-04-01" />
+                                                    <id root="e39d6ae2-8c6e-4638-9b33-412996586f41" />
+                                                    <code code="TEMP_CODE_DETERMINATION_OF_REPORTABILITY" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Determination of reportability" />
+                                                    <value xsi:type="CD" code="Y" displayName="Yes" codeSystem="2.16.840.1.113883.12.136" codeSystemName="Yes/No Indicator (HL7 Table 0136)" />
+                                                </observation>
+                                            </component>
+                                            <!-- Reporting Timeframe: NJ/Salmonellosis -->
+                                            <component typeCode="COMP">
+                                                <observation classCode="OBS" moodCode="EVN">
+                                                    <!-- [RR R1S1] Reporting Timeframe-->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.14" extension="2017-04-01" />
+                                                    <id root="8334d0bd-a404-4e12-9e9c-e278669e59ba" />
+                                                    <code code="TEMP_CODE_TIMEFRAME" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Timeframe to report (urgency)" />
+                                                    <value xsi:type="CD" code="TEMP_CODE_24_HOURS" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Within 24 hours" />
+                                                </observation>
+                                            </component>
+                                            <!-- Reporting Action: NJ/Salmonellosis -->
+                                            <component typeCode="COMP">
+                                                <observation classCode="OBS" moodCode="EVN">
+                                                    <!-- [RR R1S1] Reporting Action-->
+                                                    <templateId root="2.16.840.1.113883.10.20.15.2.3.15" extension="2017-04-01" />
+                                                    <id root="264971e6-aa20-409f-a759-5ae40231b113" />
+                                                    <code code="TEMP_CODE_ACTION" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Reporting action" />
+                                                    <value xsi:type="CD" code="TEMP_CODE_REQUIRED" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Required" />
+                                                </observation>
+                                            </component>
                                         </organizer>
                                     </component>
                                 </organizer>

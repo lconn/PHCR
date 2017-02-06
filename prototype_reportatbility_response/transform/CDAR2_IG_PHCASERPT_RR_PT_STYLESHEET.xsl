@@ -74,9 +74,10 @@
                 <xsl:call-template name="addCSS" />
             </head>
             <body>
-                <h1 class="h1center">
+                <!-- SG 20170205: Commented out for RR -->
+                <!--<h1 class="h1center">
                     <xsl:value-of select="$title" />
-                </h1>
+                </h1>-->
                 <!-- START display top portion of clinical document -->
                 <!-- SG 20170131: commented out for RR -->
 <!--                                <xsl:call-template name="recordTarget" />-->
@@ -2669,6 +2670,10 @@ td {
 
 .Underline{
   text-decoration:underline;
+}
+
+.Emphasis{
+  font-size: larger;
 }
 
           </xsl:text>
